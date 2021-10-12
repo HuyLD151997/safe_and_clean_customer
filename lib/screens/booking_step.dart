@@ -76,33 +76,33 @@ class _BookingStepState extends State<BookingStep> {
           onStepCancel: currentStep == 0
               ? null
               : () => setState(() => currentStep -= 1),
-          // controlsBuilder: (context, {onStepContinue, onStepCancel}) {
-          //   final isLastStep = currentStep == getStep().length - 1;
-          //   return Container(
-          //     margin: EdgeInsets.only(bottom: 10),
-          //     child: Column(
-          //       children: <Widget>[
-          //         SizedBox(child: Text('(Đã bao gồm phí dụng cụ)')),
-          //         SizedBox(child: Text('Số tiền: ' + 'VNĐ')),
-          //         Row(
-          //           children: <Widget>[
-          //             if (currentStep != 0)
-          //               Expanded(
-          //                   child: ElevatedButton(
-          //                       onPressed: onStepCancel,
-          //                       child: Text('BACK'))),
-          //             SizedBox(width: 12),
-          //             Expanded(
-          //                 child: ElevatedButton(
-          //                     onPressed: onStepContinue,
-          //                     child:
-          //                     Text(isLastStep ? 'CONFIRM' : 'NEXT'))),
-          //           ],
-          //         )
-          //       ],
-          //     ),
-          //   );
-          // },
+          controlsBuilder: (context, ControlsDetails details) {
+            final isLastStep = currentStep == getStep().length - 1;
+            return Container(
+              margin: EdgeInsets.only(bottom: 10),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(child: Text('(Đã bao gồm phí dụng cụ)')),
+                  SizedBox(child: Text('Số tiền: ' + 'VNĐ')),
+                  Row(
+                    children: <Widget>[
+                      if (currentStep != 0)
+                        Expanded(
+                            child: ElevatedButton(
+                                onPressed: details.onStepCancel,
+                                child: Text('BACK'))),
+                      SizedBox(width: 12),
+                      Expanded(
+                          child: ElevatedButton(
+                              onPressed: details.onStepContinue,
+                              child:
+                              Text(isLastStep ? 'CONFIRM' : 'NEXT'))),
+                    ],
+                  )
+                ],
+              ),
+            );
+          },
 
         ),
       ),
