@@ -5,8 +5,8 @@ class Service {
   final String content;
   final Color color;
   const Service({
-    required this.id,
-    required this.content,
-    required this.color
+     this.id,
+     this.content,
+     this.color
   });
 }

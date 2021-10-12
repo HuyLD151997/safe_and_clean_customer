@@ -35,14 +35,56 @@ class _HistoryScreenState extends State<HistoryScreen>{
               body: TabBarView(
                   children: <Widget>[
                     _dangLamView(),
-                    Text('Chờ làm'),
-                    Text('Lịch sử'),
+                    _choLamView(),
+                    _lichSuView(),
                   ])
             ))
     );
   }
 
   ListView _dangLamView(){
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (_, index){
+        return ListTile(
+          title: Text('Tên nhân viên #$index'),
+          subtitle: Text(
+            "Text\n Text\n Text\n Text\n Text\n Text\n Text\n Text\n Time",
+            style: TextStyle(fontSize: 12),
+          ),
+          trailing: TextButton(
+            onPressed: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => BookingDetailScreen()));
+            }, child: Text('Xem đơn'),),
+        );
+      },
+
+    );
+  }
+
+  ListView _choLamView(){
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (_, index){
+        return ListTile(
+          title: Text('Tên nhân viên #$index'),
+          subtitle: Text(
+            "Text\n Text\n Text\n Text\n Text\n Text\n Text\n Text\n Time",
+            style: TextStyle(fontSize: 12),
+          ),
+          trailing: TextButton(
+            onPressed: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => BookingDetailScreen()));
+            }, child: Text('Xem đơn'),),
+        );
+      },
+
+    );
+  }
+
+  ListView _lichSuView(){
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (_, index){

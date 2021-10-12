@@ -1,26 +1,33 @@
 class SignUpState{
-  final String? fullname;
-  final String? password;
-  final String? confirmPassword;
-  final String? phoneNumber;
+  final String fullname;
+  final String password;
+  final String confirmPassword;
+  final String phoneNumber;
+  final bool status;
+  final String dateSignUp;
 
-  const SignUpState({required this.fullname, required this.password, required this.confirmPassword, required this.phoneNumber});
+  const SignUpState({ this.fullname,  this.password,
+     this.confirmPassword,  this.phoneNumber,  this.status,  this.dateSignUp});
 }
 
 class SignUpStateInitial extends SignUpState{
-  SignUpStateInitial() : super(fullname: null, password: null, confirmPassword: null, phoneNumber: null);
+  SignUpStateInitial() : super(fullname: null, password: null, confirmPassword: null,
+      phoneNumber: null, status: false, dateSignUp: null);
 }
 
 class SignUpStateSuccess extends SignUpState{
-  SignUpStateSuccess() : super(fullname: null, password: null, confirmPassword: null, phoneNumber: null);
+  SignUpStateSuccess() : super(fullname: null, password: null, confirmPassword: null,
+      phoneNumber: null, status: true, dateSignUp: null);
 }
 
 class SignUpStateFailure extends SignUpState{
-  final String? fullname;
-  final String? password;
-  final String? confirmPassword;
-  final String? phoneNumber;
+  final String fullname;
+  final String password;
+  final String confirmPassword;
+  final String phoneNumber;
+  final bool status;
+  final String dateSignUp;
 
-  const SignUpStateFailure({required this.fullname, required this.password, required this.confirmPassword, required this.phoneNumber}) :
-        super(fullname: fullname, password: password, confirmPassword: confirmPassword, phoneNumber: phoneNumber);
+  const SignUpStateFailure({ this.fullname,  this.password,  this.confirmPassword,  this.phoneNumber,  this.status,  this.dateSignUp}) :
+        super(fullname: fullname, password: password, confirmPassword: confirmPassword, phoneNumber: phoneNumber, status: status, dateSignUp: dateSignUp);
 }

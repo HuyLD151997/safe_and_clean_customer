@@ -93,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen>{
 
   Widget _passwordField(){
     return TextFormField(
-      controller: _fullnameTextController,
+      controller: _passwordTextController,
       decoration: const InputDecoration(
         labelText: "Tên tài khoản",
       ),
@@ -102,7 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen>{
 
   Widget _confirmPasswordField(){
     return TextFormField(
-      controller: _fullnameTextController,
+      controller: _confirmPasswordTextController,
       decoration: const InputDecoration(
         labelText: "Tên tài khoản",
       ),
@@ -111,7 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen>{
 
   Widget _phoneNumberField(){
     return TextFormField(
-      controller: _fullnameTextController,
+      controller: _phoneNumberTextController,
       decoration: const InputDecoration(
         labelText: "Tên tài khoản",
       ),

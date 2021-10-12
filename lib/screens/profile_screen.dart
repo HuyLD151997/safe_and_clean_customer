@@ -22,112 +22,17 @@ class ProfileScreen extends StatelessWidget{
             child: Column(
               children: <Widget>[
                 SizedBox(height: 10),
-                SizedBox(
-                  height: 115,
-                  width: 115,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: <Widget>[
-                      CircleAvatar(
-                        child: Image.network(
-                            'https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png'
-                        ),
-                      ),
-                    ],
-                  )
-                ),
+                _avatar(),
                 SizedBox(height: 10),
-                SizedBox(
-                  child: FlatButton(
-                      padding: EdgeInsets.all(20),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                      color: Colors.grey,
-                      onPressed: (){
-                        // navigetor my_acc_screen
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => InformationScreen()));
-                      },
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                              child: Text('Thông tin tài khoản')),
-                          Icon(Icons.arrow_forward)
-                        ],
-                      )
-                  ),
-                ),
+                _informationAccount(context),
                 SizedBox(height: 10),
-                SizedBox(
-                  child: FlatButton(
-                      padding: EdgeInsets.all(20),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                      color: Colors.grey,
-                      onPressed: (){
-                        // navigetor my_acc_screen
-                      },
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                              child: Text('Wallet')),
-                          Icon(Icons.wallet_giftcard)
-                        ],
-                      )
-                  ),
-                ),
+                _wallet(),
                 SizedBox(height: 10),
-                SizedBox(
-                  child: FlatButton(
-                      padding: EdgeInsets.all(20),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                      color: Colors.grey,
-                      onPressed: (){
-                        // navigetor feelback_screen
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => FeelbackScreen()));
-                      },
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                              child: Text('Feelback')),
-                          Icon(Icons.feedback)
-                        ],
-                      )
-                  ),
-                ),
+                _feelback(context),
                 SizedBox(height: 10),
-                SizedBox(
-                  child: FlatButton(
-                      padding: EdgeInsets.all(20),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                      color: Colors.grey,
-                      onPressed: (){
-                        // navigetor my_acc_screen
-                      },
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                              child: Text('Help')),
-                          Icon(Icons.help)
-                        ],
-                      )
-                  ),
-                ),
+                _help(),
                 SizedBox(height: 10),
-                SizedBox(
-                  child: FlatButton(
-                      padding: EdgeInsets.all(20),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                      color: Colors.grey,
-                      onPressed: (){
-                        // navigetor my_acc_screen
-                      },
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                              child: Text('Setting')),
-                          Icon(Icons.settings)
-                        ],
-                      )
-                  ),
-                ),
+                _setting(),
                 SizedBox(height: 10),
                 _logoutButton(),
               ],
@@ -135,6 +40,127 @@ class ProfileScreen extends StatelessWidget{
           ),
 
         )
+    );
+  }
+
+
+
+  Widget _avatar(){
+    return SizedBox(
+        height: 115,
+        width: 115,
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            CircleAvatar(
+              child: Image.network(
+                  'https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png'
+              ),
+            ),
+          ],
+        )
+    );
+  }
+
+  Widget _informationAccount(BuildContext context){
+    return SizedBox(
+      child: FlatButton(
+          padding: EdgeInsets.all(20),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          color: Colors.grey,
+          onPressed: (){
+            // navigetor my_acc_screen
+            Navigator.push(context, MaterialPageRoute(builder: (context) => InformationScreen()));
+          },
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                  child: Text('Thông tin tài khoản')),
+              Icon(Icons.arrow_forward)
+            ],
+          )
+      ),
+    );
+  }
+
+  Widget _wallet(){
+    return SizedBox(
+      child: FlatButton(
+          padding: EdgeInsets.all(20),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          color: Colors.grey,
+          onPressed: (){
+            // navigetor my_acc_screen
+          },
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                  child: Text('Wallet')),
+              Icon(Icons.wallet_giftcard)
+            ],
+          )
+      ),
+    );
+  }
+
+  Widget _feelback(BuildContext context){
+    return SizedBox(
+      child: FlatButton(
+          padding: EdgeInsets.all(20),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          color: Colors.grey,
+          onPressed: (){
+            // navigetor feelback_screen
+            Navigator.push(context, MaterialPageRoute(builder: (context) => FeelbackScreen()));
+          },
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                  child: Text('Feelback')),
+              Icon(Icons.feedback)
+            ],
+          )
+      ),
+    );
+  }
+
+  Widget _help(){
+    return SizedBox(
+      child: FlatButton(
+          padding: EdgeInsets.all(20),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          color: Colors.grey,
+          onPressed: (){
+            // navigetor my_acc_screen
+          },
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                  child: Text('Help')),
+              Icon(Icons.help)
+            ],
+          )
+      ),
+    );
+  }
+
+  Widget _setting(){
+    return SizedBox(
+      child: FlatButton(
+          padding: EdgeInsets.all(20),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          color: Colors.grey,
+          onPressed: (){
+            // navigetor my_acc_screen
+          },
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                  child: Text('Setting')),
+              Icon(Icons.settings)
+            ],
+          )
+      ),
     );
   }
 
@@ -152,12 +178,12 @@ class ProfileScreen extends StatelessWidget{
       },
 
     );*/
-    TextButton(
-      child: Text('Logout'),
-      onPressed: (){
-        // _authenticationBloc.add(AuthenticationEventLoggedOut());
-      },
-    );
+      TextButton(
+        child: Text('Logout'),
+        onPressed: (){
+          // _authenticationBloc.add(AuthenticationEventLoggedOut());
+        },
+      );
   }
 }
 

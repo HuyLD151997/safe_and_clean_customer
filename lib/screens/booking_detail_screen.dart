@@ -9,43 +9,55 @@ class BookingDetailScreen extends StatelessWidget{
         child: Column(
           children: <Widget>[
             Text('Thông tin nhân viên'),
-            Container(
-              margin: const EdgeInsets.all(15),
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(border: Border.all(), color: Colors.white),
-              child: const Text(
-                  'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-                      'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-                      'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-                      'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-              ),
-            ),
+            _infoEmp(),
             Text('Thông tin khách hàng'),
-            Container(
-              margin: const EdgeInsets.all(15),
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(border: Border.all(), color: Colors.white),
-              child: const Text(
-                  'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-                      'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-                      'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-                      'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-              ),
-            ),
+            _infoCus(),
             Text('Thông tin công việc'),
-            Container(
-              margin: const EdgeInsets.all(15),
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(border: Border.all(), color: Colors.white),
-              child: const Text(
-                  'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-                      'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-                      'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-                      'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
-              ),
-            ),
+            _infoJob(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _infoEmp(){
+    return Container(
+      margin: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(border: Border.all(), color: Colors.white),
+      child: const Text(
+          'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+              'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+              'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+              'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+      ),
+    );
+  }
+
+  Widget _infoCus(){
+    return Container(
+      margin: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(border: Border.all(), color: Colors.white),
+      child: const Text(
+          'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+              'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+              'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+              'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+      ),
+    );
+  }
+
+  Widget _infoJob(){
+    return Container(
+      margin: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(border: Border.all(), color: Colors.white),
+      child: const Text(
+          'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+              'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+              'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
+              'Text.Text.Text.Text.Text. Text.Text.Text.Text.Text.\n '
       ),
     );
   }

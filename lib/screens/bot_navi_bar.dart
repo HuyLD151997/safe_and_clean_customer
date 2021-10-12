@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safe_and_clean_customer/models/service.dart';
 import 'package:safe_and_clean_customer/screens/profile_screen.dart';
 
 import 'history_screen.dart';
@@ -16,6 +17,7 @@ class BotNaviBar extends StatefulWidget{
 }
 
 class _BotNaviBarState extends State<BotNaviBar>{
+  Service service;
   int selectedIndex = 1;
   Widget _homeScreen = HomeScreen();
   Widget _historyScreen = HistoryScreen();

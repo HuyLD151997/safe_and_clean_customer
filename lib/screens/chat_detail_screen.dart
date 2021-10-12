@@ -4,7 +4,7 @@ import 'package:safe_and_clean_customer/models/user.dart';
 
 class ChatDetailScreen extends StatefulWidget{
   final User user;
-  ChatDetailScreen({required this.user});
+  ChatDetailScreen({ this.user});
   @override
   State<StatefulWidget> createState() {
     return _ChatDetailScreenState();
@@ -183,7 +183,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen>{
   }
   @override
   Widget build(BuildContext context) {
-    int? prevUserId;
+    int prevUserId;
     return Scaffold(
       backgroundColor: Color(0xFFF6F6F6),
       appBar: AppBar(

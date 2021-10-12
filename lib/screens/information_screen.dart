@@ -89,38 +89,46 @@ class _InformationScreenState extends State<InformationScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    OutlinedButton(
-                        onPressed: (){
-                          
-                        },
-                        child: Text('Cancel', style: TextStyle(
-                          fontSize: 15,
-                          letterSpacing: 2,
-                          color: Colors.black
-                        ),),
-                      style: OutlinedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(horizontal: 50),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
-                      ),
-                    ),
-                    ElevatedButton(
-                        onPressed: (){},
-                        child: Text('Save', style: TextStyle(
-                            fontSize: 15,
-                            letterSpacing: 2,
-                            color: Colors.white
-                        ),),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.blueAccent,
-                          padding: EdgeInsets.symmetric(horizontal: 50),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
-                      ),
-                    )
+                    _cancelButton(),
+                    _updateButton()
                   ],
                 ),
               ],
             ),
           )),
+    );
+  }
+
+  Widget _cancelButton(){
+    return OutlinedButton(
+      onPressed: (){
+
+      },
+      child: Text('Cancel', style: TextStyle(
+          fontSize: 15,
+          letterSpacing: 2,
+          color: Colors.black
+      ),),
+      style: OutlinedButton.styleFrom(
+          padding: EdgeInsets.symmetric(horizontal: 50),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
+      ),
+    );
+  }
+
+  Widget _updateButton(){
+    return ElevatedButton(
+      onPressed: (){},
+      child: Text('Save', style: TextStyle(
+          fontSize: 15,
+          letterSpacing: 2,
+          color: Colors.white
+      ),),
+      style: ElevatedButton.styleFrom(
+          primary: Colors.blueAccent,
+          padding: EdgeInsets.symmetric(horizontal: 50),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
+      ),
     );
   }
 }

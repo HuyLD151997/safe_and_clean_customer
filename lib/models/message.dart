@@ -7,10 +7,10 @@ class Message {
   final bool unread;
 
   Message({
-    required this.sender,
-    required this.time,
-    required this.text,
-    required this.unread,
+     this.sender,
+     this.time,
+     this.text,
+     this.unread,
   });
 }
 

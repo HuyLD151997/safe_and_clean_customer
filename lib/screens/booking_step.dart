@@ -1,13 +1,12 @@
-import 'dart:developer';
-
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:safe_and_clean_customer/models/service.dart';
 
 
 
 class BookingStep extends StatefulWidget {
   Service service;
-  BookingStep({required Key key, required this.service}) : super(key: key);
+  BookingStep({ Key key,  this.service}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return _BookingStepState();
@@ -36,7 +35,7 @@ class _BookingStepState extends State<BookingStep> {
   DateTime selectedDate = DateTime.now();
 
   _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
+    final DateTime picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,
       firstDate: DateTime(DateTime.now().year - 5),
@@ -77,33 +76,34 @@ class _BookingStepState extends State<BookingStep> {
           onStepCancel: currentStep == 0
               ? null
               : () => setState(() => currentStep -= 1),
-         /* controlsBuilder: (context, {onStepContinue, onStepCancel}) {
-            final isLastStep = currentStep == getStep().length - 1;
-            return Container(
-              margin: EdgeInsets.only(bottom: 10),
-              child: Column(
-                children: <Widget>[
-                  SizedBox(child: Text('(Đã bao gồm phí dụng cụ)')),
-                  SizedBox(child: Text('Số tiền: ' + 'VNĐ')),
-                  Row(
-                    children: <Widget>[
-                      if (currentStep != 0)
-                        Expanded(
-                            child: ElevatedButton(
-                                onPressed: onStepCancel,
-                                child: Text('BACK'))),
-                      SizedBox(width: 12),
-                      Expanded(
-                          child: ElevatedButton(
-                              onPressed: onStepContinue,
-                              child:
-                              Text(isLastStep ? 'CONFIRM' : 'NEXT'))),
-                    ],
-                  )
-                ],
-              ),
-            );
-          },*/
+          // controlsBuilder: (context, {onStepContinue, onStepCancel}) {
+          //   final isLastStep = currentStep == getStep().length - 1;
+          //   return Container(
+          //     margin: EdgeInsets.only(bottom: 10),
+          //     child: Column(
+          //       children: <Widget>[
+          //         SizedBox(child: Text('(Đã bao gồm phí dụng cụ)')),
+          //         SizedBox(child: Text('Số tiền: ' + 'VNĐ')),
+          //         Row(
+          //           children: <Widget>[
+          //             if (currentStep != 0)
+          //               Expanded(
+          //                   child: ElevatedButton(
+          //                       onPressed: onStepCancel,
+          //                       child: Text('BACK'))),
+          //             SizedBox(width: 12),
+          //             Expanded(
+          //                 child: ElevatedButton(
+          //                     onPressed: onStepContinue,
+          //                     child:
+          //                     Text(isLastStep ? 'CONFIRM' : 'NEXT'))),
+          //           ],
+          //         )
+          //       ],
+          //     ),
+          //   );
+          // },
+
         ),
       ),
     );

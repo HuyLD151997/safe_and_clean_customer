@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
 import 'package:safe_and_clean_customer/blocs/login_bloc.dart';
 import 'package:safe_and_clean_customer/events/login_event.dart';
 import 'package:safe_and_clean_customer/screens/bot_navi_bar.dart';
 import 'package:safe_and_clean_customer/screens/register_screen.dart';
 import 'package:safe_and_clean_customer/states/login_state.dart';
-
 
 class LoginScreen extends StatefulWidget {
   /*final String username ;
@@ -19,7 +20,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late LoginBloc _loginBloc;
+   LoginBloc _loginBloc;
   bool isLogin = false;
   final TextEditingController _usernameTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
@@ -28,6 +29,13 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     _loginBloc = BlocProvider.of(context);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _usernameTextController.dispose();
+    _passwordTextController.dispose();
+    super.dispose();
   }
 
   @override
@@ -79,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   ],
                 ),*/
-              BlocBuilder<LoginBloc, LoginState>(
+              /*BlocBuilder<LoginBloc, LoginState>(
                 builder: (context, state) {
                   if (state is LoginStateFailure) {
                     return Text(state.errorMessage);
@@ -89,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   }
                   return SizedBox();
                 },
-              ),
+              ),*/
             ],
           ),
         ),
@@ -120,6 +128,13 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<LoginBloc, LoginState>(
       bloc: _loginBloc,
       listener: (context, state) {
+        print(state);
+        if (state is LoginStateFailure) {
+          return _showNotification(context, "fail");
+        }
+        if (state is LoginEmptyState) {
+          return _showNotification(context, "empty");
+        }
         if (state is LoginStateSuccess) {
           if (state.isLogin) {
             Navigator.push(
@@ -128,10 +143,10 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       },
       child: ElevatedButton(
-        onPressed: () {
+        onPressed: () async {
           _loginBloc.add(LoginEvent(
-              username: _usernameTextController.text,
-              password: _passwordTextController.text));
+              username: _usernameTextController.value.text,
+              password: _passwordTextController.value.text));
           // Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPage()));
         },
         child: const Text("Đăng nhập"),
@@ -173,5 +188,30 @@ class _LoginScreenState extends State<LoginScreen> {
             context, MaterialPageRoute(builder: (context) => RegisterScreen()));
       },
     );
+  }
+
+  _showNotification(BuildContext context, String msg){
+    switch(msg){
+      case"fail":
+        MotionToast.error(
+          description: "Username and password is invalid",
+          title: "ERROR",
+          titleStyle: TextStyle(fontWeight: FontWeight.bold),
+          animationType: ANIMATION.FROM_BOTTOM,
+          position: MOTION_TOAST_POSITION.BOTTOM,
+          width: 300,
+        ).show(context);
+        break;
+      case "empty":
+        MotionToast.warning(
+          title: "WARNING",
+          titleStyle: TextStyle(fontWeight: FontWeight.bold),
+          description: "Username and password is not blank",
+          animationType: ANIMATION.FROM_BOTTOM,
+          position: MOTION_TOAST_POSITION.BOTTOM,
+          width: 300,
+        ).show(context);
+        break;
+    }
   }
 }

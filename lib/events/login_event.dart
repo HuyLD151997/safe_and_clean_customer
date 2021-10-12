@@ -7,7 +7,7 @@ class LoginFetchEvent extends LoginBloc {}
 class LoginEvent extends LoginBloc {
   final String username;
   final String password;
-  LoginEvent({required this.username, required this.password});
+  LoginEvent({ this.username,  this.password});
 }
 
 class LoginGoogleEvent extends LoginBloc{}
