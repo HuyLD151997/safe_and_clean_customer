@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:safe_and_clean_customer/events/sign_up_event.dart';
+import 'package:safe_and_clean_customer/repositories/sign_up_repository.dart';
 import 'package:safe_and_clean_customer/states/sign_up_state.dart';
 
 class SignUpBloc extends Bloc<SignUpBloc, SignUpState> {
@@ -135,7 +135,7 @@ class SignUpBloc extends Bloc<SignUpBloc, SignUpState> {
     }
       if (event is SignUpEvent) {
         try{
-          if(event.fullName.trim().isEmpty){
+          if(event.customer.username.trim().isEmpty){
             yield const SignUpStateFailure(
                 fullname: 'Name is not blank',
                 password: null,
@@ -144,7 +144,7 @@ class SignUpBloc extends Bloc<SignUpBloc, SignUpState> {
                 status: false,
                 dateSignUp: null,
             );
-          }else if(event.password.isEmpty){
+          }else if(event.customer.password.isEmpty){
             yield const SignUpStateFailure(
                 fullname: null,
                 password: 'Password is not blank',
@@ -162,7 +162,7 @@ class SignUpBloc extends Bloc<SignUpBloc, SignUpState> {
                 status: false,
                 dateSignUp: null,
             );
-          }else if(event.confirmPassword.compareTo(event.password) != 0){
+          }else if(event.confirmPassword.compareTo(event.customer.password) != 0){
             yield const SignUpStateFailure(
                 fullname: null,
                 password: null,
@@ -171,7 +171,7 @@ class SignUpBloc extends Bloc<SignUpBloc, SignUpState> {
                 status: false,
                 dateSignUp: null,
             );
-          }else if(event.phoneNumber.trim().isEmpty || event.phoneNumber.length != 10){
+          }else if(event.customer.phoneNumber.trim().isEmpty || event.customer.phoneNumber.length != 10){
             yield const SignUpStateFailure(
                 fullname: null,
                 password: null,
@@ -181,11 +181,7 @@ class SignUpBloc extends Bloc<SignUpBloc, SignUpState> {
                 dateSignUp: null,
             );
           }else{
-            String dateSignUp = event.dateSignUp.split(' ')[0];
-            DateTime date = DateTime.parse(dateSignUp);
-            String formatDate = DateFormat('yyyy/MM/dd').format(date);
-            print(formatDate);
-
+            String signUp = await signUp(event.customer);
           }
         }catch (exception) {
           print('State error: ' + exception.toString());

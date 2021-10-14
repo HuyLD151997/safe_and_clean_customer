@@ -17,7 +17,7 @@ class BotNaviBar extends StatefulWidget{
 }
 
 class _BotNaviBarState extends State<BotNaviBar>{
-  Service service;
+  Service? service;
   int selectedIndex = 1;
   Widget _homeScreen = HomeScreen();
   Widget _historyScreen = HistoryScreen();

@@ -14,11 +14,11 @@ class LoginBloc extends Bloc<LoginBloc, LoginState>{
     }
 
     if(event is LoginEvent) {
-      if (event.username.trim().isEmpty || event.password.trim().isEmpty) {
+      if (event.account.username.trim().isEmpty || event.account.password.trim().isEmpty) {
         yield LoginEmptyState();
       } else {
         try {
-          bool isLogin = await checkLogin(event.username, event.password);
+          bool isLogin = await checkLogin(event.account);
           if (isLogin == true) {
             yield LoginStateSuccess(isLogin: true, msg: '');
           } else {

@@ -5,6 +5,7 @@ import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 import 'package:safe_and_clean_customer/blocs/login_bloc.dart';
 import 'package:safe_and_clean_customer/events/login_event.dart';
+import 'package:safe_and_clean_customer/models/account.dart';
 import 'package:safe_and_clean_customer/screens/bot_navi_bar.dart';
 import 'package:safe_and_clean_customer/screens/register_screen.dart';
 import 'package:safe_and_clean_customer/states/login_state.dart';
@@ -20,7 +21,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-   LoginBloc _loginBloc;
+  LoginBloc? _loginBloc;
   bool isLogin = false;
   final TextEditingController _usernameTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
@@ -119,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
       obscureText: true,
       controller: _passwordTextController,
       decoration: const InputDecoration(
-        labelText: "Tên tài khoản",
+        labelText: "Mật khẩu",
       ),
     );
   }
@@ -128,10 +129,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<LoginBloc, LoginState>(
       bloc: _loginBloc,
       listener: (context, state) {
-        print(state);
-        if (state is LoginStateFailure) {
-          return _showNotification(context, "fail");
-        }
+        // if (state is LoginStateFailure) {
+        //   return _showNotification(context, "fail");
+        // }
         if (state is LoginEmptyState) {
           return _showNotification(context, "empty");
         }
@@ -139,14 +139,14 @@ class _LoginScreenState extends State<LoginScreen> {
           if (state.isLogin) {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => BotNaviBar()));
+          }else{
+            return _showNotification(context, "fail");
           }
         }
       },
       child: ElevatedButton(
         onPressed: () async {
-          _loginBloc.add(LoginEvent(
-              username: _usernameTextController.value.text,
-              password: _passwordTextController.value.text));
+          _loginBloc!.add(LoginEvent(Account(username: _usernameTextController.text, password: _passwordTextController.text)));
           // Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPage()));
         },
         child: const Text("Đăng nhập"),
@@ -172,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
               minimumSize: Size(double.infinity, 50),
             ),
             onPressed: () {
-              _loginBloc.add(LoginGoogleEvent());
+              _loginBloc!.add(LoginGoogleEvent());
             },
 
            child: Text('Sign in with Google'))

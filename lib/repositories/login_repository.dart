@@ -1,25 +1,21 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:safe_and_clean_customer/models/account.dart';
+import '../contants.dart';
 
 
     /*final http.Client httpClient;
   //constructor
   LoginRepo({@required this.httpClient}): assert(httpClient != null);*/
     // post method
-    Future<bool> checkLogin(String username, String password) async {
+    Future<bool> checkLogin(Account account) async {
       try {
-        var param = {
-          /*"username": "admin",
-      "password": "123456"*/
-          "username": username,
-          "password": password,
-        };
+
         final response = await http.post(
-            Uri.parse("LOGIN_URL"),
-            body: json.encode(param),
+            Uri.parse("$LOGIN_URL/Auth"),
+            body: account.toJson(),
             headers: {HttpHeaders.contentTypeHeader: "application/json",});
-        print(response.body);
+        print(response.statusCode);
         if (response.statusCode == 200) {
           final String result = response.body;
           return true;

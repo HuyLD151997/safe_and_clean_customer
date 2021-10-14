@@ -14,8 +14,8 @@ import 'fake_data.dart';
 
 
 class HomeScreen extends StatelessWidget{
-  Service service;
-  HomeScreen({ this.service});
+  // Service service;
+  // HomeScreen({ required this.service});
   @override
   Widget build(BuildContext context) {
     /*LoginRepo repo = new LoginRepo();
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget{
       child:InkWell(
         onTap: (){
           // Navigator BookingStep
-          Navigator.push(context, MaterialPageRoute(builder: (context) => BookingStep(service: this.service)));
+         // Navigator.push(context, MaterialPageRoute(builder: (context) => BookingStep(service: this.service,)));
         },
         child: GridView.count(
           crossAxisCount: 3,

@@ -6,7 +6,7 @@ import 'package:safe_and_clean_customer/models/service.dart';
 
 class BookingStep extends StatefulWidget {
   Service service;
-  BookingStep({ Key key,  this.service}) : super(key: key);
+  BookingStep({required this.service}) : super();
   @override
   State<StatefulWidget> createState() {
     return _BookingStepState();
@@ -35,7 +35,7 @@ class _BookingStepState extends State<BookingStep> {
   DateTime selectedDate = DateTime.now();
 
   _selectDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,
       firstDate: DateTime(DateTime.now().year - 5),
@@ -76,7 +76,7 @@ class _BookingStepState extends State<BookingStep> {
           onStepCancel: currentStep == 0
               ? null
               : () => setState(() => currentStep -= 1),
-          controlsBuilder: (context, ControlsDetails details) {
+          controlsBuilder: (BuildContext context, { onStepContinue, onStepCancel}) {
             final isLastStep = currentStep == getStep().length - 1;
             return Container(
               margin: EdgeInsets.only(bottom: 10),
@@ -89,12 +89,12 @@ class _BookingStepState extends State<BookingStep> {
                       if (currentStep != 0)
                         Expanded(
                             child: ElevatedButton(
-                                onPressed: details.onStepCancel,
+                                onPressed: onStepCancel,
                                 child: Text('BACK'))),
                       SizedBox(width: 12),
                       Expanded(
                           child: ElevatedButton(
-                              onPressed: details.onStepContinue,
+                              onPressed: onStepContinue,
                               child:
                               Text(isLastStep ? 'CONFIRM' : 'NEXT'))),
                     ],

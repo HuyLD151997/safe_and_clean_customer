@@ -5,10 +5,10 @@ class User {
   final bool isOnline;
 
   User({
-     this.id,
-     this.name,
-     this.imageUrl,
-     this.isOnline,
+     required this.id,
+     required this.name,
+     required this.imageUrl,
+     required this.isOnline,
   });
 }
 

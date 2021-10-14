@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:safe_and_clean_customer/blocs/login_bloc.dart';
+import 'package:safe_and_clean_customer/events/login_event.dart';
 import 'package:safe_and_clean_customer/screens/feelback_screen.dart';
 import 'package:safe_and_clean_customer/screens/information_screen.dart';
+
+import 'login_screen.dart';
 
 
 
@@ -34,7 +39,7 @@ class ProfileScreen extends StatelessWidget{
                 SizedBox(height: 10),
                 _setting(),
                 SizedBox(height: 10),
-                _logoutButton(),
+                _logoutButton(context),
               ],
             ),
           ),
@@ -164,7 +169,7 @@ class ProfileScreen extends StatelessWidget{
     );
   }
 
-  Widget _logoutButton(){
+  Widget _logoutButton(BuildContext context){
     return
       /*BlocListener<AuthenticationBloc, AuthenticationState>(
       bloc: _authenticationBloc,
@@ -181,7 +186,14 @@ class ProfileScreen extends StatelessWidget{
       TextButton(
         child: Text('Logout'),
         onPressed: (){
-          // _authenticationBloc.add(AuthenticationEventLoggedOut());
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (BuildContext context) => BlocProvider(
+                  create: (context) => LoginBloc()..add(LoginFetchEvent()),
+                  child: LoginScreen()),
+            ),
+                (Route route) => false,
+          );
         },
       );
   }

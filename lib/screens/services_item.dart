@@ -5,7 +5,7 @@ import 'package:safe_and_clean_customer/models/service.dart';
 
 class ServiceItem extends StatelessWidget {
   Service service;
-  ServiceItem({this.service});
+  ServiceItem({required this.service});
   @override
   Widget build(BuildContext context) {
     Color _color = this.service.color;

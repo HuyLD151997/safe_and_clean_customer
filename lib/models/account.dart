@@ -6,8 +6,8 @@ class Account extends Equatable{
   final String password;
 
   const Account({
-     this.username,
-     this.password});
+     required this.username,
+     required this.password});
 
   @override
   // TODO: implement props
